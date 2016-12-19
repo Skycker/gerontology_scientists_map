@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Gerontologists map</title>
+    <link rel="stylesheet" href="styles/vendor.css">
+</head>
+<body>
+
+<div class="ui container">
+    <div class="ui vertical segment">
+        <div class="ui selection dropdown js-filter-dropdown">
+            <input type="hidden" name="gender" id="affiliation-filter">
+            <i class="dropdown icon"></i>
+
+            <div class="default text">Affiliation Category</div>
+            <div class="menu">
+                <div class="item" data-value="">
+                    Any affiliation category
+                </div>
+                <!--TODO: make codes for categories and compare them instead of strings-->
+                <div class="item" data-value="COST International Partners">
+                    COST International Partners
+                </div>
+                <div class="item" data-value="COST Country Institutions">
+                    COST Country Institutions
+                </div>
+                <div class="item" data-value="Near-Neighbour Country Institutions">
+                    Near-Neighbour Country Institutions
+                </div>
+            </div>
+        </div>
+
+        <div class="ui selection dropdown js-filter-dropdown">
+            <input type="hidden" name="gender" id="expertise-filter">
+            <i class="dropdown icon"></i>
+
+            <div class="default text">Core expertise</div>
+            <div class="menu">
+                <div class="item" data-value="">
+                    Any core expertise
+                </div>
+                <!--TODO: make codes for expertise and compare them instead of strings-->
+                <div class="item"
+                     data-value="Computer and Information Sciences (Regenerative medicine for life and health extension)">
+                    Computer and Information Sciences
+                </div>
+                <div class="item" data-value="Health Sciences (Sport and fitness sciences)">
+                    Health Sciences
+                </div>
+                <div class="item"
+                     data-value="Electrical engineering, electronic engineering, Information engineering (Communications engineering and systems)">
+                    Electrical engineering, electronic engineering, Information engineering
+                </div>
+                <div class="item" data-value="Biological sciences">
+                    Biological sciences
+                </div>
+                <div class="item" data-value="Economics and business">
+                    Economics and business
+                </div>
+                <div class="item" data-value="Basic medicine">
+                    Basic medicine
+                </div>
+                <div class="item" data-value="Biological sciences">
+                    Biological sciences
+                </div>
+            </div>
+        </div>
+
+        <div class="ui selection dropdown js-filter-dropdown">
+            <input type="hidden" name="gender" id="gender-filter">
+            <i class="dropdown icon"></i>
+
+            <div class="default text">Gender</div>
+            <div class="menu">
+                <div class="item" data-value="">
+                    Any gender
+                </div>
+                <div class="item" data-value="male">
+                    Male
+                </div>
+                <div class="item" data-value="female">
+                    Female
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="map" style="width: 100%; height: 700px"></div>
+</div>
+
+<script src="js/vendor.js"></script>
+<script src="js/build.js"></script>
+</body>
+</html>
