@@ -3,7 +3,7 @@ import MapMarkerHandler from "./map-marker-handler";
 
 
 // make google map marker for gerontologist
-var prepareMarker = function (scientist) {
+let prepareMarker = function (scientist) {
     return new google.maps.Marker({
         position: scientist.location,
         title: scientist.name,
@@ -12,7 +12,7 @@ var prepareMarker = function (scientist) {
 };
 
 // make window with extra information about gerontologist
-var prepareInfoWindow = function (scientist) {
+let prepareInfoWindow = function (scientist) {
     return new google.maps.InfoWindow({
         content: `<p><strong>${scientist.name}</strong></p>
         <p>Country: ${scientist.country}</p>
@@ -22,16 +22,16 @@ var prepareInfoWindow = function (scientist) {
         <p>Institution: ${scientist.institution}</p>
         <p>COST Affiliation Category: ${scientist.affiliationCategory}</p>
         <p>Core expertise: ${scientist.expertise}</p>
-        <p>Contacts: ${scientist.email}, ${scientist.phone}</p>`
+        <p>Contacts: ${scientist.email}</p>`//<p>Contacts: ${scientist.email}, ${scientist.phone}</p>
     });
 };
 
 // get data about scientists.
 // In real life that code should send ajax request to server and we need promise to handle asynchronous code.
 // but we don't have server side, so this promise resolves data from constant array
-var getGerontologists = function (gender, category, expertise) {
+let getGerontologists = function (gender, category, expertise) {
     return new Promise((resolve, reject) => {
-        var data = gerontologists;
+        let data = gerontologists;
         // in real life filter params should be sent to server as ajax GET-parameters
         // but wee use mock up and filter it via js
         if (gender) {
@@ -54,14 +54,14 @@ var getGerontologists = function (gender, category, expertise) {
 };
 
 $(window).ready(() => {
-    var center = {lat: 25.363, lng: 131.044};
-    var gerontologistMap = new MapMarkerHandler("map", center, 2);
+    let center = {lat: 25.363, lng: 131.044};
+    let gerontologistMap = new MapMarkerHandler("map", center, 2);
 
-    var updateMap = function () {
+    let updateMap = function () {
         gerontologistMap.removeMarkers();
-        var gender = $("#gender-filter").val();
-        var category = $("#affiliation-filter").val();
-        var expertise = $("#expertise-filter").val();
+        let gender = $("#gender-filter").val();
+        let category = $("#affiliation-filter").val();
+        let expertise = $("#expertise-filter").val();
         getGerontologists(gender, category, expertise).then(function (people) {
             for (let person of people) {
                 let marker = prepareMarker(person);
@@ -71,7 +71,7 @@ $(window).ready(() => {
                 });
                 // We don't have server to save new marker coordinates, just put type in in console
                 marker.addListener('dragend', function (marker) {
-                    var latLng = marker.latLng;
+                    let latLng = marker.latLng;
                     console.log(`New lat: ${latLng.lat()}, New lng: ${latLng.lng()}`)
                 });
                 gerontologistMap.addMarker(marker)
